@@ -132,49 +132,33 @@
     }
     .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,.07); }
 
-    /* hero — photo placeholder */
-    .hero-right {
-      position: relative; overflow: hidden;
+    /* ─── PHOTOS EN ACTION ─── */
+    .photos-duo {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      margin-top: 48px;
     }
-    .photo-placeholder {
-      width: 100%; height: 100%; min-height: 300px;
-      background: linear-gradient(135deg, rgba(255,255,255,.04) 0%, rgba(255,255,255,.01) 100%);
-      border-left: 1px solid rgba(255,255,255,.08);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 12px; cursor: pointer;
-      transition: background .25s;
-      position: relative;
+    .photo-slot {
+      border-radius: var(--r); overflow: hidden; position: relative;
+      background: var(--g100); border: 2px dashed var(--g200);
+      height: 340px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+      transition: border-color .2s, background .2s;
     }
-    .photo-placeholder:hover { background: rgba(255,255,255,.06); }
-    .photo-placeholder .ph-icon {
-      width: 70px; height: 70px;
-      border: 2px dashed rgba(125,224,164,.5);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.8rem; color: rgba(125,224,164,.6);
+    .photo-slot:hover { border-color: var(--g500); background: var(--g200); }
+    /* Once you add an <img> inside, it fills the slot automatically */
+    .photo-slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--r) - 2px); }
+    .photo-slot svg { opacity: .35; color: var(--g600); }
+    .photo-slot .ps-label {
+      font-size: 0.8rem; font-weight: 700; color: var(--gray);
+      letter-spacing: 0.07em; text-transform: uppercase;
     }
-    .photo-placeholder .ph-label {
-      font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,.35);
-      letter-spacing: 0.06em; text-transform: uppercase;
+    .photo-slot .ps-sub { font-size: 0.72rem; color: #8aab96; text-align: center; max-width: 180px; }
+    .photo-slot .ps-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(13,43,26,.7));
+      color: var(--white); font-size: 0.82rem; font-weight: 600;
+      padding: 28px 16px 14px; border-radius: 0 0 calc(var(--r) - 2px) calc(var(--r) - 2px);
     }
-    .photo-placeholder .ph-sub {
-      font-size: 0.72rem; color: rgba(255,255,255,.2); text-align: center; max-width: 160px;
-    }
-    /* generic photo placeholder (reusable in sections) */
-    .img-slot {
-      background: var(--g100);
-      border: 2px dashed var(--g200);
-      border-radius: var(--r);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 10px; color: var(--g600);
-      cursor: pointer; transition: border-color .2s, background .2s;
-    }
-    .img-slot:hover { border-color: var(--g600); background: var(--g200); }
-    .img-slot svg { opacity: .45; }
-    .img-slot .sl-label { font-size: 0.8rem; font-weight: 600; color: var(--gray); letter-spacing: 0.05em; text-transform: uppercase; }
-    .img-slot .sl-sub { font-size: 0.72rem; color: #8aab96; }
 
     /* ─── URGENCE STRIP ─── */
     .urgence {
@@ -221,9 +205,6 @@
       transition: box-shadow .2s, border-color .2s;
     }
     .scard:hover { box-shadow: 0 8px 28px rgba(13,43,26,.1); border-color: var(--g500); }
-    .scard-photo {
-      height: 175px;
-    }
     .scard-body { padding: 24px 22px 26px; }
     .scard-icon {
       width: 44px; height: 44px;
@@ -236,16 +217,8 @@
     .scard ul li { display: flex; gap: 8px; }
     .scard ul li::before { content: ''; width: 6px; height: 6px; background: var(--g500); border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
 
-    /* ─── ABOUT / PHOTO SPLIT ─── */
+    /* ─── ABOUT ─── */
     #about { background: var(--white); }
-    .split {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
-    }
-    .split.reverse { direction: rtl; }
-    .split.reverse > * { direction: ltr; }
-    .split-photo { height: 420px; border-radius: var(--r); overflow: hidden; }
-    .split-text .section-label { margin-bottom: 8px; }
-    .split-text .section-title { margin-bottom: 12px; }
     .check-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
     .check-list li { display: flex; gap: 12px; font-size: 0.9rem; color: var(--text); }
     .check-list li::before {
@@ -290,11 +263,8 @@
     .price-row .pr-val { font-weight: 700; color: var(--g800); white-space: nowrap; margin-left: 10px; }
     .pcard-note { margin-top: 16px; font-size: 0.77rem; color: var(--gray); background: var(--off); padding: 9px 13px; border-radius: 6px; }
 
-    /* ─── REALISATIONS (photo gallery) ─── */
-    #realisations { background: var(--off); }
-    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .gallery-grid .img-slot { height: 220px; }
-    .gallery-grid .img-slot.large { grid-column: span 2; height: 260px; }
+    /* ─── EN ACTION ─── */
+    #en-action { background: var(--off); }
 
     /* ─── POURQUOI ─── */
     #pourquoi { background: var(--g800); color: var(--white); }
@@ -386,22 +356,14 @@
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
       .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-left { padding: 56px 28px 40px; }
-      .hero-right { height: 260px; }
       section { padding: 60px 24px; }
-      .split { grid-template-columns: 1fr; gap: 32px; }
-      .split.reverse { direction: ltr; }
-      .split-photo { height: 260px; }
+      .photos-duo { grid-template-columns: 1fr; }
+      .photo-slot { height: 260px; }
       .contact-grid { grid-template-columns: 1fr; gap: 36px; }
       .frow { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; }
-      .gallery-grid .img-slot.large { grid-column: span 2; }
       footer { padding: 36px 24px 22px; }
     }
     @media (max-width: 560px) {
-      .gallery-grid { grid-template-columns: 1fr; }
-      .gallery-grid .img-slot.large { grid-column: span 1; }
       .urgence { padding: 20px; gap: 14px; }
     }
   </style>
@@ -420,7 +382,6 @@
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#tarifs">Tarifs</a></li>
-      <li><a href="#realisations">Réalisations</a></li>
       <li><a href="#clients">Clientèle</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="tel:+33619091110" class="nav-cta">📞 Appeler</a></li>
@@ -428,37 +389,22 @@
   </nav>
 
   <!-- ── HERO ── -->
-  <header class="hero">
-    <div class="hero-left">
-      <span class="hero-badge">Essonne (91) — Palaiseau &amp; alentours</span>
-      <h1>The Serrurerie 91</h1>
-      <p class="hero-subtitle">Serrurerie &amp; Fermetures Générales</p>
-      <p class="hero-tagline">Expert en Sécurité et Installation dans l'Essonne (91)</p>
-
-      <p style="font-size:.83rem;color:rgba(255,255,255,.5);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;font-weight:600;">
-        Dépannage urgent · Sécurisation · Installation neuve
-      </p>
-      <a href="tel:+33619091110" class="hero-phone">06 19 09 11 10</a>
-      <p class="hero-mention">Intervention rapide dans tout le 91 — Devis gratuit</p>
-
-      <div class="hero-actions">
-        <a href="tel:+33619091110" class="btn-green">
-          <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 3.18 2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-          Appeler maintenant
-        </a>
-        <a href="#services" class="btn-ghost">Voir les services</a>
-      </div>
-    </div>
-
-    <!-- HERO PHOTO PLACEHOLDER -->
-    <div class="hero-right">
-      <div class="photo-placeholder" title="Remplacer par une photo du serrurier en intervention">
-        <div class="ph-icon">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-        </div>
-        <p class="ph-label">Photo principale</p>
-        <p class="ph-sub">Photo du serrurier en intervention (ex : travail sur une serrure)</p>
-      </div>
+  <header class="hero" style="display:block;text-align:center;padding:80px 48px 72px;">
+    <span class="hero-badge">Essonne (91) — Palaiseau &amp; alentours</span>
+    <h1>The Serrurerie 91</h1>
+    <p class="hero-subtitle">Serrurerie &amp; Fermetures Générales</p>
+    <p class="hero-tagline">Expert en Sécurité et Installation dans l'Essonne (91)</p>
+    <p style="font-size:.83rem;color:rgba(255,255,255,.5);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;font-weight:600;">
+      Dépannage urgent · Sécurisation · Installation neuve
+    </p>
+    <a href="tel:+33619091110" class="hero-phone" style="display:inline-block;">06 19 09 11 10</a>
+    <p class="hero-mention">Intervention rapide dans tout le 91 — Devis gratuit</p>
+    <div class="hero-actions" style="justify-content:center;">
+      <a href="tel:+33619091110" class="btn-green">
+        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 3.18 2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        Appeler maintenant
+      </a>
+      <a href="#services" class="btn-ghost">Voir les services</a>
     </div>
   </header>
 
@@ -471,31 +417,22 @@
     <a href="tel:+33619091110" class="uphone">06 19 09 11 10</a>
   </div>
 
-  <!-- ── ABOUT (split) ── -->
+  <!-- ── ABOUT ── -->
   <section id="about">
-    <div class="container">
-      <div class="split">
-        <div class="split-photo img-slot" title="Remplacer par une photo portrait ou atelier">
-          <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <p class="sl-label">Photo artisan</p>
-          <p class="sl-sub">Portrait ou photo d'atelier</p>
-        </div>
-        <div class="split-text">
-          <div class="section-label">Votre artisan local</div>
-          <h2 class="section-title">Un savoir-faire complet pour toutes vos ouvertures</h2>
-          <p style="color:var(--gray);font-size:.93rem;">
-            Des interventions soignées, respectueuses de votre matériel et aux normes actuelles.
-            Basé à Palaiseau, j'interviens dans tout l'Essonne (91) pour les particuliers comme pour les professionnels.
-          </p>
-          <ul class="check-list">
-            <li>Devis gratuit avant toute intervention</li>
-            <li>Matériel professionnel toutes marques</li>
-            <li>Ouverture fine, sans dégâts ni effraction</li>
-            <li>Serrures A2P agréées assurances</li>
-            <li>Tarifs clairs et transparents</li>
-          </ul>
-        </div>
-      </div>
+    <div class="container" style="max-width:740px;">
+      <div class="section-label">Votre artisan local</div>
+      <h2 class="section-title">Un savoir-faire complet pour toutes vos ouvertures</h2>
+      <p style="color:var(--gray);font-size:.95rem;">
+        Des interventions soignées, respectueuses de votre matériel et aux normes actuelles.
+        Basé à Palaiseau, j'interviens dans tout l'Essonne (91) pour les particuliers comme pour les professionnels.
+      </p>
+      <ul class="check-list">
+        <li>Devis gratuit avant toute intervention</li>
+        <li>Matériel professionnel toutes marques</li>
+        <li>Ouverture fine, sans dégâts ni effraction</li>
+        <li>Serrures A2P agréées assurances</li>
+        <li>Tarifs clairs et transparents</li>
+      </ul>
     </div>
   </section>
 
@@ -511,10 +448,6 @@
       <div class="services-grid">
 
         <div class="scard">
-          <div class="scard-photo img-slot" title="Photo dépannage d'urgence">
-            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            <p class="sl-label">Photo urgence</p>
-          </div>
           <div class="scard-body">
             <div class="scard-icon">🔓</div>
             <h3>Serrurerie &amp; Dépannage d'urgence</h3>
@@ -528,10 +461,6 @@
         </div>
 
         <div class="scard">
-          <div class="scard-photo img-slot" title="Photo blindage / haute sécurité">
-            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            <p class="sl-label">Photo blindage</p>
-          </div>
           <div class="scard-body">
             <div class="scard-icon">🛡️</div>
             <h3>Haute sécurité &amp; Blindage</h3>
@@ -545,10 +474,6 @@
         </div>
 
         <div class="scard">
-          <div class="scard-photo img-slot" title="Photo volets roulants / fenêtres">
-            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            <p class="sl-label">Photo volets</p>
-          </div>
           <div class="scard-body">
             <div class="scard-icon">🪟</div>
             <h3>Fermetures, Volets &amp; Confort</h3>
@@ -562,10 +487,6 @@
         </div>
 
         <div class="scard">
-          <div class="scard-photo img-slot" title="Photo contrôle d'accès / digicode">
-            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            <p class="sl-label">Photo contrôle accès</p>
-          </div>
           <div class="scard-body">
             <div class="scard-icon">📱</div>
             <h3>Contrôle d'accès &amp; Solutions pro</h3>
@@ -667,39 +588,35 @@
     </div>
   </section>
 
-  <!-- ── REALISATIONS ── -->
-  <section id="realisations">
+  <!-- ── EN ACTION ── -->
+  <section id="en-action">
     <div class="container">
-      <div class="section-label">Galerie</div>
-      <h2 class="section-title">Quelques réalisations</h2>
-      <p class="section-sub">Photos avant/après, chantiers représentatifs — à remplacer par vos propres images.</p>
+      <div class="section-label">En intervention</div>
+      <h2 class="section-title">Le travail bien fait, sur le terrain</h2>
+      <p class="section-sub">Remplacez ces espaces par deux photos de vos interventions réelles.</p>
 
-      <div class="gallery-grid">
-        <div class="img-slot large" title="Photo réalisation 1 — grande">
+      <div class="photos-duo">
+
+        <!-- PHOTO 1 : remplacer par <img src="photo-depannage.jpg" alt="Dépannage urgent"> -->
+        <div class="photo-slot">
           <svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <p class="sl-label">Réalisation principale</p>
-          <p class="sl-sub">Ex : blindage de porte avant/après</p>
+          <p class="ps-label">Photo dépannage</p>
+          <p class="ps-sub">Ex : ouverture de porte, serrure forcée, porte claquée</p>
+          <!-- Décommentez et adaptez la ligne ci-dessous une fois votre photo prête : -->
+          <!-- <img src="images/depannage.jpg" alt="Dépannage urgence serrurier 91" /> -->
+          <!-- <span class="ps-caption">Dépannage d'urgence</span> -->
         </div>
-        <div class="img-slot" title="Photo réalisation 2">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <p class="sl-label">Réalisation 2</p>
+
+        <!-- PHOTO 2 : remplacer par <img src="photo-intervention.jpg" alt="Serrurier en intervention"> -->
+        <div class="photo-slot">
+          <svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <p class="ps-label">Photo en intervention</p>
+          <p class="ps-sub">Ex : pose de serrure, remplacement de cylindre, blindage</p>
+          <!-- Décommentez et adaptez la ligne ci-dessous une fois votre photo prête : -->
+          <!-- <img src="images/intervention.jpg" alt="Serrurier en intervention Essonne" /> -->
+          <!-- <span class="ps-caption">Installation &amp; pose</span> -->
         </div>
-        <div class="img-slot" title="Photo réalisation 3">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <p class="sl-label">Réalisation 3</p>
-        </div>
-        <div class="img-slot" title="Photo réalisation 4">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <p class="sl-label">Réalisation 4</p>
-        </div>
-        <div class="img-slot" title="Photo réalisation 5">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <p class="sl-label">Réalisation 5</p>
-        </div>
-        <div class="img-slot" title="Photo réalisation 6">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <p class="sl-label">Réalisation 6</p>
-        </div>
+
       </div>
     </div>
   </section>
@@ -761,12 +678,6 @@
             <div class="cd-ico">✅</div>
             <div><strong>Devis gratuit</strong>Avant toute intervention, sans engagement</div>
           </div>
-          <!-- Map placeholder -->
-          <div class="img-slot" style="height:200px;margin-top:28px;border-radius:var(--r);overflow:hidden;" title="Insérer une carte Google Maps ici">
-            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-            <p class="sl-label">Carte Google Maps</p>
-            <p class="sl-sub">Insérer un iframe Google Maps ici</p>
-          </div>
         </div>
 
         <div class="contact-form">
@@ -806,7 +717,6 @@
     <div class="flinks">
       <a href="#services">Services</a>
       <a href="#tarifs">Tarifs</a>
-      <a href="#realisations">Réalisations</a>
       <a href="#contact">Contact</a>
       <a href="#">Mentions légales</a>
     </div>

@@ -202,16 +202,15 @@
     .section-label {
       font-size: 0.69rem; font-weight: 700; letter-spacing: 0.18em;
       text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+      text-align: center;
     }
     .section-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.7rem, 3vw, 2.3rem);
       color: var(--g900); line-height: 1.15; margin-bottom: 16px;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.01em; text-align: center;
     }
-    .section-sub { color: var(--gray); font-size: 0.95rem; max-width: 520px; margin-bottom: 48px; line-height: 1.7; }
-    .text-center { text-align: center; }
-    .text-center .section-sub { margin-left: auto; margin-right: auto; }
+    .section-sub { color: var(--gray); font-size: 0.95rem; max-width: 520px; margin-bottom: 48px; line-height: 1.7; text-align: center; margin-left: auto; margin-right: auto; }
 
     /* ─── SERVICES ─── */
     #services { background: var(--off); }
@@ -429,20 +428,41 @@
 
   <!-- ── ABOUT ── -->
   <section id="about">
-    <div class="container" style="max-width:740px;">
+    <div class="container" style="max-width:740px;text-align:center;">
       <div class="section-label">Votre artisan local</div>
       <h2 class="section-title">Un savoir-faire complet pour toutes vos ouvertures</h2>
-      <p style="color:var(--gray);font-size:.95rem;">
+      <p style="color:var(--gray);font-size:.95rem;margin-bottom:28px;">
         Des interventions soignées, respectueuses de votre matériel et aux normes actuelles.
         Basé à Palaiseau, j'interviens dans tout l'Essonne (91) pour les particuliers, les professionnels et les copropriétés.
       </p>
-      <ul class="check-list">
+      <ul class="check-list" style="text-align:left;display:inline-flex;flex-direction:column;">
         <li>Devis gratuit avant toute intervention</li>
         <li>Matériel professionnel toutes marques</li>
         <li>Ouverture fine, sans dégâts ni effraction</li>
         <li>Serrures A2P agréées assurances</li>
         <li>Tarifs clairs et transparents</li>
       </ul>
+    </div>
+  </section>
+
+  <!-- ── EN ACTION ── -->
+  <section id="en-action">
+    <div class="container" style="text-align:center;">
+      <div class="section-label">En intervention</div>
+      <h2 class="section-title">Le travail bien fait, sur le terrain</h2>
+
+      <div class="photos-duo">
+        <!-- PHOTO 1 -->
+        <div class="photo-slot">
+          <img src="https://tisselia.com/wp-content/uploads/2026/04/Capture-decran-2026-04-02-a-11.20.43.png" alt="Dépannage urgence serrurier 91" />
+          <span class="ps-caption">Dépannage d'urgence</span>
+        </div>
+        <!-- PHOTO 2 -->
+        <div class="photo-slot">
+          <img src="https://tisselia.com/wp-content/uploads/2026/04/Capture-decran-2026-04-02-a-11.25.05.png" alt="Serrurier en intervention Essonne" />
+          <span class="ps-caption">Installation &amp; pose</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -592,31 +612,6 @@
             <div class="price-row"><span class="pr-name">Barre anti-panique 3 points</span><span class="pr-val">350 €</span></div>
             <div class="pcard-note">Solutions pour particuliers, copropriétés et professionnels.</div>
           </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── EN ACTION ── -->
-  <section id="en-action">
-    <div class="container">
-      <div class="section-label">En intervention</div>
-      <h2 class="section-title">Le travail bien fait, sur le terrain</h2>
-      <p class="section-sub">Remplacez ces espaces par deux photos de vos interventions réelles.</p>
-
-      <div class="photos-duo">
-
-        <!-- PHOTO 1 -->
-        <div class="photo-slot">
-          <img src="https://tisselia.com/wp-content/uploads/2026/04/Capture-decran-2026-04-02-a-11.20.43.png" alt="Dépannage urgence serrurier 91" />
-          <span class="ps-caption">Dépannage d'urgence</span>
-        </div>
-
-        <!-- PHOTO 2 -->
-        <div class="photo-slot">
-          <img src="https://tisselia.com/wp-content/uploads/2026/04/Capture-decran-2026-04-02-a-11.25.05.png" alt="Serrurier en intervention Essonne" />
-          <span class="ps-caption">Installation &amp; pose</span>
         </div>
 
       </div>

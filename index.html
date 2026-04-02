@@ -156,7 +156,7 @@
     .photo-slot {
       border-radius: var(--r); overflow: hidden; position: relative;
       background: var(--g100); border: 2px dashed var(--g200);
-      height: 340px;
+      height: 480px;
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
       transition: border-color .2s, background .2s;
     }
@@ -341,44 +341,12 @@
 
     /* ─── CONTACT ─── */
     #contact { background: var(--g100); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-    .contact-info .big-phone {
+    .big-phone {
       font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 800;
       color: var(--g800); text-decoration: none; letter-spacing: -0.01em;
-      display: block; margin: 16px 0; transition: color .2s;
+      transition: color .2s;
     }
-    .contact-info .big-phone:hover { color: var(--g600); }
-    .cdetail { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; font-size: 0.87rem; color: var(--gray); }
-    .cd-ico {
-      width: 34px; height: 34px; background: var(--white); border: 1px solid var(--light);
-      border-radius: 6px; display: flex; align-items: center; justify-content: center;
-      font-size: 0.95rem; flex-shrink: 0;
-    }
-    .cdetail strong { display: block; color: var(--text); font-size: 0.83rem; font-weight: 600; margin-bottom: 1px; }
-    .contact-form {
-      background: var(--white); border: 1px solid var(--light);
-      border-radius: var(--r); padding: 36px 30px;
-      box-shadow: 0 4px 24px rgba(8,26,16,.07);
-    }
-    .contact-form h3 { font-size: 1rem; font-weight: 700; color: var(--g900); margin-bottom: 22px; letter-spacing: 0.01em; }
-    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .fg { margin-bottom: 14px; }
-    .fg label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--text); margin-bottom: 5px; letter-spacing: 0.02em; }
-    .fg input, .fg select, .fg textarea {
-      width: 100%; padding: 10px 13px;
-      border: 1.5px solid var(--light); border-radius: 5px;
-      font-family: 'Inter', sans-serif; font-size: 0.88rem; color: var(--text);
-      background: var(--white); outline: none; transition: border-color .2s;
-    }
-    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--g600); }
-    .fg textarea { min-height: 88px; resize: vertical; }
-    .fsub {
-      width: 100%; background: var(--g700); color: var(--white);
-      padding: 13px; border: none; border-radius: 5px;
-      font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700;
-      cursor: pointer; transition: background .2s; letter-spacing: 0.02em;
-    }
-    .fsub:hover { background: var(--g600); }
+    .big-phone:hover { color: var(--g600); }
 
     /* ─── FOOTER ─── */
     footer {
@@ -401,13 +369,12 @@
       .nav-links { display: none; }
       section { padding: 60px 24px; }
       .photos-duo { grid-template-columns: 1fr; }
-      .photo-slot { height: 260px; }
-      .contact-grid { grid-template-columns: 1fr; gap: 36px; }
-      .frow { grid-template-columns: 1fr; }
+      .photo-slot { height: 380px; }
       footer { padding: 36px 24px 22px; }
     }
     @media (max-width: 560px) {
       .urgence { padding: 20px; gap: 14px; }
+      #contact div[style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -695,55 +662,36 @@
 
   <!-- ── CONTACT ── -->
   <section id="contact">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="section-label">Contact</div>
-          <h2 class="section-title">Besoin d'un conseil<br />ou d'une intervention ?</h2>
-          <p style="color:var(--gray);font-size:.92rem;margin-bottom:20px;">
-            Appelez directement pour une réponse immédiate, ou remplissez le formulaire pour un devis écrit.
-          </p>
-          <a href="tel:+33619091110" class="big-phone">06 19 09 11 10</a>
-          <div class="cdetail">
-            <div class="cd-ico">📍</div>
-            <div><strong>Localisation</strong>Palaiseau, Essonne (91)</div>
-          </div>
-          <div class="cdetail">
-            <div class="cd-ico">🕐</div>
-            <div><strong>Disponibilité</strong>7j/7 — interventions urgentes possibles en soirée</div>
-          </div>
-          <div class="cdetail">
-            <div class="cd-ico">✅</div>
-            <div><strong>Devis gratuit</strong>Avant toute intervention, sans engagement</div>
-          </div>
+    <div class="container" style="max-width:740px;text-align:center;">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Besoin d'un conseil ou d'une intervention ?</h2>
+      <p style="color:var(--gray);font-size:.95rem;margin-bottom:28px;">
+        Appelez directement pour une réponse immédiate. Disponible 7 jours sur 7.
+      </p>
+      <a href="tel:+33619091110" class="big-phone" style="display:inline-block;margin-bottom:36px;">06 19 09 11 10</a>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div style="background:var(--white);border:1px solid var(--light);border-radius:var(--r);padding:28px 18px;">
+          <div style="font-size:1.5rem;margin-bottom:10px;">📍</div>
+          <strong style="display:block;font-size:.88rem;color:var(--g900);margin-bottom:4px;">Localisation</strong>
+          <p style="font-size:.84rem;color:var(--gray);line-height:1.5;">Palaiseau, Essonne (91)</p>
         </div>
-
-        <div class="contact-form">
-          <h3>Demander un devis gratuit</h3>
-          <form action="mailto:deluch.kouch@yahoo.fr" method="post" enctype="text/plain">
-          <div class="frow">
-            <div class="fg"><label for="nom">Nom</label><input type="text" id="nom" name="Nom" placeholder="Dupont" required /></div>
-            <div class="fg"><label for="tel">Téléphone</label><input type="tel" id="tel" name="Telephone" placeholder="06 XX XX XX XX" required /></div>
-          </div>
-          <div class="fg">
-            <label for="prestation">Type de prestation</label>
-            <select id="prestation" name="Prestation">
-              <option value="">-- Sélectionnez --</option>
-              <option>Ouverture de porte / urgence</option>
-              <option>Remplacement de serrure / cylindre</option>
-              <option>Haute sécurité / blindage</option>
-              <option>Volets roulants</option>
-              <option>Contrôle d'accès / digicode</option>
-              <option>Autre</option>
-            </select>
-          </div>
-          <div class="fg">
-            <label for="message">Message (optionnel)</label>
-            <textarea id="message" name="Message" placeholder="Décrivez brièvement votre besoin…"></textarea>
-          </div>
-          <button class="fsub" type="submit">Envoyer la demande</button>
-          </form>
+        <div style="background:var(--white);border:1px solid var(--light);border-radius:var(--r);padding:28px 18px;">
+          <div style="font-size:1.5rem;margin-bottom:10px;">🕐</div>
+          <strong style="display:block;font-size:.88rem;color:var(--g900);margin-bottom:4px;">Disponibilité</strong>
+          <p style="font-size:.84rem;color:var(--gray);line-height:1.5;">7j/7 — urgences possibles en soirée</p>
         </div>
+        <div style="background:var(--white);border:1px solid var(--light);border-radius:var(--r);padding:28px 18px;">
+          <div style="font-size:1.5rem;margin-bottom:10px;">✅</div>
+          <strong style="display:block;font-size:.88rem;color:var(--g900);margin-bottom:4px;">Devis gratuit</strong>
+          <p style="font-size:.84rem;color:var(--gray);line-height:1.5;">Avant toute intervention, sans engagement</p>
+        </div>
+      </div>
+      <div style="margin-top:32px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;">
+        <a href="tel:+33619091110" class="btn-green">
+          <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 3.18 2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          Appeler maintenant
+        </a>
+        <a href="mailto:deluch.kouch@yahoo.fr" class="btn-ghost" style="border-color:var(--g400);color:var(--g700);">Envoyer un email</a>
       </div>
     </div>
   </section>
